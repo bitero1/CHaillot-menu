@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>منوی کافه شایلوت</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --jade: #2e8b57;
+      --brown: #6b3f2b;
+      --bg: #fbfbf9;
+      --muted: #6b6b6b;
+      --card: #ffffff;
+      font-family: 'Vazirmatn', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#f5f6f5);color:#111}
+    .app{max-width:920px;margin:18px auto;padding:16px}
+    header{display:flex;align-items:center;gap:12px}
+    .brand{display:flex;flex-direction:column}
+    .brand h1{margin:0;font-size:20px;color:var(--brown)}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .controls{display:flex;gap:8px;margin-top:12px;align-items:center}
+    .search{flex:1;display:flex}
+    .search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6;background:transparent}
+    .ig{display:flex;align-items:center;gap:8px}
+    .ig a{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:var(--jade);color:#fff;text-decoration:none;font-weight:600}
+    nav.sections{display:flex;gap:8px;margin-top:14px;overflow:auto}
+    nav.sections button{padding:8px 12px;border-radius:999px;border:none;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.06);cursor:pointer}
+    nav.sections button.active{background:linear-gradient(90deg,var(--jade),#2f7b50);color:#fff}
+    .menu-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+    .card{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(28,28,28,0.06);display:flex;flex-direction:column;gap:8px;transition:transform .18s ease,box-shadow .18s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(20,20,20,0.08)}
+    .item-title{font-weight:600}
+    .item-desc{font-size:13px;color:var(--muted)}
+    @media (max-width:700px){.menu-list{grid-template-columns:1fr}.brand h1{font-size:18px}}
+    .fade-in{animation:fadeIn .45s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    footer{margin-top:18px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .small-link{color:var(--brown);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="app fade-in">
+    <header>
+      <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,var(--jade),#246b45);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">ش</div>
+      <div class="brand">
+        <h1>کافه شایلوت</h1>
+        <p>منو ساده — تازه‌سازی روزانه — موبایل فرست</p>
+      </div>
+      <div style="margin-left:auto" class="ig">
+        <a href="#" id="instaBtn">دیدن اینستاگرام</a>
+      </div>
+    </header>
+    <div class="controls">
+      <div class="search">
+        <input id="search" placeholder="جستجو در منو" aria-label="جستجو در منو">
+      </div>
+      <div>
+        <button id="clearBtn" title="پاک کردن جستجو" style="padding:10px;border-radius:10px;border:none;background:var(--brown);color:#fff">پاک</button>
+      </div>
+    </div>
+    <nav class="sections" id="sections">
+      <button data-section="all" class="active">همه</button>
+      <button data-section="hot">گرم</button>
+      <button data-section="cold">سرد</button>
+      <button data-section="pastry">شیرینی</button>
+      <button data-section="special">ویژه</button>
+    </nav>
+    <main id="menu" class="menu-list" aria-live="polite">
+      <article class="card" data-section="hot" data-search="آمریکانو قوی">
+        <div class="item-title">آمریکانو</div>
+        <div class="item-desc">قهوه ساده، شفاف و کلاسیک</div>
+      </article>
+      <article class="card" data-section="hot" data-search="کاپوچینو خامه">
+        <div class="item-title">کاپوچینو</div>
+        <div class="item-desc">لطیف، فوم ملایم</div>
+      </article>
+      <article class="card" data-section="cold" data-search="آیس لاته وانیل">
+        <div class="item-title">آیس لاته</div>
+        <div class="item-desc">سرشار از یخ و طعم وانیل</div>
+      </article>
+      <article class="card" data-section="cold" data-search="لیموناد خانگی">
+        <div class="item-title">لیموناد</div>
+        <div class="item-desc">ترش و تازه</div>
+      </article>
+      <article class="card" data-section="pastry" data-search="کرواسان شکلات">
+        <div class="item-title">کرواسان</div>
+        <div class="item-desc">پفکی، با پر کردن شکلاتی</div>
+      </article>
+      <article class="card" data-section="special" data-search="نسکافه ویژه">
+        <div class="item-title">ویژه شایلوت</div>
+        <div class="item-desc">ترکیب اختصاصی رُست متوسط با ادویه ملایم</div>
+      </article>
+    </main>
+    <footer>
+      <div>برای سفارش یا سوال: <a class="small-link" href="#" id="contactLink">ارسال پیام</a></div>
+      <div>طراحی‌شده برای موبایل • ساده و مختصر</div>
+    </footer>
+  </div>
+  <script>
+    document.getElementById('instaBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      window.open('https://www.instagram.com/your_cafe_page','_blank');
+    });
+    const sectionButtons = document.querySelectorAll('nav.sections button');
+    const items = Array.from(document.querySelectorAll('#menu article'));
+    sectionButtons.forEach(btn => btn.addEventListener('click', ()=>{
+      sectionButtons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      filterAndRender();
+    }));
+    const searchInput = document.getElementById('search');
+    const clearBtn = document.getElementById('clearBtn');
+    clearBtn.addEventListener('click', ()=>{searchInput.value=''; filterAndRender(); searchInput.focus();});
+    searchInput.addEventListener('input', ()=>filterAndRender());
+    function filterAndRender(){
+      const q = searchInput.value.trim().toLowerCase();
+      const active = document.querySelector('nav.sections button.active').dataset.section;
+      items.forEach(it =>{
+        const txt = (it.dataset.search + ' ' + it.querySelector('.item-title').innerText).toLowerCase();
+        const inSection = (active === 'all') || (it.dataset.section === active);
+        const matches = q === '' ? true : txt.indexOf(q) !== -1;
+        it.style.display = (inSection && matches) ? 'flex' : 'none';
+      });
+    }
+    filterAndRender();
+    document.getElementById('contactLink').addEventListener('click', function(e){
+      e.preventDefault();
+      window.open('https://www.instagram.com/your_cafe_page','_blank');
+    });
+  </script>
+</body>
+</html>
