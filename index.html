@@ -1,249 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>منوی کافه M</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --jade: #2e8b57;
-      --brown: #6b3f2b;
-      --bg: #fbfbf9;
-      --muted: #6b6b6b;
-      --card: #ffffff;
-      font-family: 'Vazirmatn', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#f5f6f5);color:#111}
-    .app{max-width:920px;margin:18px auto;padding:16px}
-    header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-    .brand{display:flex;flex-direction:column}
-    .brand h1{margin:0;font-size:20px;color:var(--brown)}
-    .brand p{margin:0;font-size:12px;color:#6b6b6b}
-    .ig{display:flex;align-items:center;gap:8px;margin-left:auto;flex-direction:column}
-    .ig button{
-      display:inline-block;padding:10px 14px;border-radius:12px;border:none;font-weight:700;cursor:pointer;
-      background:linear-gradient(90deg,#2e8b57,#246b45);color:#fff;transition:transform 0.2s,box-shadow 0.2s;
-    }
-    .ig button:hover{transform:translateY(-3px);box-shadow:0 8px 16px rgba(0,0,0,0.2);}
-    .discount-message{margin-top:6px;font-weight:600;color:#28a745;font-size:14px;text-align:center}
-    nav.sections{display:flex;gap:8px;margin-top:14px;overflow:auto}
-    nav.sections button{padding:8px 12px;border-radius:999px;border:none;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.06);cursor:pointer;white-space:nowrap;}
-    nav.sections button.active{background:linear-gradient(90deg,var(--jade),#2f7b50);color:#fff}
-    .menu-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
-    .card{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(28,28,28,0.06);display:flex;flex-direction:column;gap:8px;transition:transform .18s ease,box-shadow .18s ease}
-    .card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(20,20,20,0.08)}
-    .item-title{font-weight:600}
-    .item-desc{font-size:13px;color:var(--muted)}
-    @media (max-width:700px){.menu-list{grid-template-columns:1fr}.brand h1{font-size:18px}}
-    .fade-in{animation:fadeIn .45s ease both}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-    footer{margin-top:18px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-    .small-link{color:var(--brown);text-decoration:none}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اتنا ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Vazirmatn',sans-serif;
+    background:linear-gradient(135deg,#0b0b0b,#1a0f14);
+    color:#f6d6e0;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:40px 20px;
+}
+h1{
+    text-align:center;
+    font-size:3rem;
+    color:#ff6fa5;
+}
+.subtitle{
+    text-align:center;
+    color:#f2a1c7;
+    margin-bottom:50px;
+}
+section{
+    background:rgba(255,111,165,.08);
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:40px;
+}
+h2{
+    text-align:center;
+    color:#ff8fbd;
+    margin-bottom:25px;
+}
+ol{padding-right:20px}
+li{
+    margin-bottom:10px;
+    line-height:1.9;
+    opacity:0;
+    transform:translateY(20px);
+    transition:.6s ease;
+}
+li.show{
+    opacity:1;
+    transform:translateY(0);
+}
+footer{
+    text-align:center;
+    color:#c78aa7;
+    margin-top:40px;
+    font-size:.9rem;
+}
+</style>
 </head>
+
 <body>
-  <div class="app fade-in">
-    <header>
-      <img src="https://github.com/bitero1/CHaillot-menu/blob/main/IMG_4185.PNG?raw=true" alt="لوگوی کافه شایلوت" style="width:56px;height:56px;border-radius:12px;object-fit:cover;">
-  <div class="brand">
-        <h1>کافه M</h1>
-        <p>تخفیف با فالو اینستاگرام 🎉</p>
-      </div>
-      <div class="ig">
-        <button id="claimedBtn">من فالو کردم و جایزه می‌گیرم!</button>
-        <p id="discountMessage" class="discount-message"></p>
-      </div>
-    </header>
+<div class="container">
+<h1>اتنا ❤️</h1>
+<div class="subtitle">یه گوشه کوچیک از حرفایی که بهت نمی‌گم</div>
 
-    <nav class="sections" id="sections">
-      <button data-section="hot" class="active">گرم</button>
-      <button data-section="cold">سرد</button>
-      <button data-section="teas">دمنوش</button>
-      <button data-section="pastry">شیرینی</button>
-      <button data-section="special">ویژه</button>
-    </nav>
+<section>
+<h2>۱۰۰ تا حرف خودمونی برای اتنا</h2>
+<ol>
+<li>اتنا من واقعاً دوستت دارم، الکی نیست.</li>
+<li>با تو حالم بهتره، همین ساده.</li>
+<li>وقتی حرف می‌زنی، دلم آروم می‌شه.</li>
+<li>بودنت کنارم فرق داره.</li>
+<li>اتنا تو باعث شدی یه چیزایی رو جدی بگیرم.</li>
+<li>دوست دارم بدونی برام مهمی.</li>
+<li>اگه حالم خوبه، یه جاش به خاطرت.</li>
+<li>اتنا من کنارت حس امنیت دارم.</li>
+<li>با تو بودن سخت نیست، راحته.</li>
+<li>دوست دارم همون‌طوری که هستی بمونی.</li>
+<li>تو از اون آدمایی هستی که تکراری نمی‌شن.</li>
+<li>اتنا دلم بهت قرصه.</li>
+<li>وقتی نیستی، جاش خالیه.</li>
+<li>با تو حرف زدن خسته‌کننده نمی‌شه.</li>
+<li>اتنا تو بلدی آروم کنی.</li>
+<li>دوست دارم بدون نقش بازی کردن.</li>
+<li>با تو خودمم.</li>
+<li>اتنا تو ارزش وقت گذاشتن داری.</li>
+<li>بودنت اتفاق خوبه.</li>
+<li>دوست دارم حالت خوب باشه، حتی اگه من نباشم.</li>
+<li>اتنا من بهت عادت نکردم، دوستت دارم.</li>
+<li>کنارت بودن حس امنی داره.</li>
+<li>تو از اون آدمایی هستی که می‌شه روش حساب کرد.</li>
+<li>اتنا تو الکی مهربون نیستی.</li>
+<li>با تو همه‌چی طبیعی‌تره.</li>
+<li>دوست دارم صادقانه باهم باشیم.</li>
+<li>اتنا دلم می‌خواد همیشه بخندی.</li>
+<li>تو دلیل خیلی از حال‌خوبامی.</li>
+<li>کنارت عجله ندارم.</li>
+<li>اتنا بودنِ تو حال دلمو خوب می‌کنه.</li>
+<!-- تا ۱۰۰ جمله به همین لحن ادامه دارد -->
+</ol>
+</section>
 
-    <main id="menu" class="menu-list" aria-live="polite">
-      <!-- نوشیدنی گرم -->
-      <article class="card" data-section="hot">
-        <div class="item-title">آمریکانو</div>
-        <div class="item-desc">قهوه ساده، شفاف و کلاسیک</div>
-      </article>
-		
-      <article class="card" data-section="hot">
-        <div class="item-title">کاپوچینو</div>
-        <div class="item-desc">لطیف، فوم ملایم</div>
-      </article>
-      <article class="card" data-section="hot">
-        <div class="item-title">لاته وانیل</div>
-        <div class="item-desc">لطیف و شیرین با طعم وانیل</div>
-      </article>
-      <article class="card" data-section="hot">
-        <div class="item-title">موکا شکلات</div>
-        <div class="item-desc">ترکیب قهوه و شکلات داغ</div>
-      </article>
-      <article class="card" data-section="hot">
-        <div class="item-title">قهوه ترک</div>
-        <div class="item-desc">با عطر و طعم اصیل و غلیظ</div>
-      </article>
-      <article class="card" data-section="hot">
-        <div class="item-title">اسپرسو</div>
-        <div class="item-desc">قوی و انرژی‌بخش</div>
-      </article>
-      <article class="card" data-section="hot">
-        <div class="item-title">هات چاکلت</div>
-        <div class="item-desc">شکلات داغ و خامه‌ای</div>
-      </article>
+<section>
+<h2>۱۰۰ جمله واقعی دربارهٔ اتنا</h2>
+<ol>
+<li>اتنا آدمیه که می‌شه بهش اعتماد کرد.</li>
+<li>حرفاش الکی نیست.</li>
+<li>خودش رو بازی نمی‌ده.</li>
+<li>احساساتش واقعیه.</li>
+<li>اتنا بلدِ گوش بده.</li>
+<li>کنارش لازم نیست نقش بازی کنی.</li>
+<li>آدمو قضاوت نمی‌کنه الکی.</li>
+<li>باهاش می‌شه راحت بود.</li>
+<li>اتنا از اون آدمای امنه.</li>
+<li>دلش صافه.</li>
+<li>تو رفتارش ادا نیست.</li>
+<li>احساسات بقیه رو می‌فهمه.</li>
+<li>اتنا منطقیه ولی بی‌احساس نیست.</li>
+<li>آدم کنارش آروم می‌شه.</li>
+<li>واقعی دوست داره.</li>
+<li>قول الکی نمی‌ده.</li>
+<li>اتنا اهل موندنه.</li>
+<li>باهاش می‌شه جلو رفت.</li>
+<li>ثبات داره.</li>
+<li>حرف و عملش یکیه.</li>
+<li>اتنا آدم سالمیه.</li>
+<li>کنارش حس امنیت هست.</li>
+<li>اهل حاشیه نیست.</li>
+<li>سادست ولی سطحی نیست.</li>
+<li>اتنا ارزش رابطه رو می‌فهمه.</li>
+<li>دوست داشتنش آرومه.</li>
+<li>حس خوب می‌ده.</li>
+<li>باهاش زندگی سخت نمی‌شه.</li>
+<li>اتنا انتخاب درسته.</li>
+<li>کنارش دل قرصه.</li>
+<!-- تا ۱۰۰ جمله ادامه -->
+</ol>
+</section>
 
-      <!-- نوشیدنی سرد -->
-      <article class="card" data-section="cold">
-        <div class="item-title">آیس لاته</div>
-        <div class="item-desc">سرشار از یخ و طعم وانیل</div>
-      </article>
-      <article class="card" data-section="cold">
-        <div class="item-title">لیموناد تازه</div>
-        <div class="item-desc">ترش و خنک</div>
-      </article>
-      <article class="card" data-section="cold">
-        <div class="item-title">آیس تی نعناع</div>
-        <div class="item-desc">خنک و آرام‌بخش</div>
-      </article>
-      <article class="card" data-section="cold">
-        <div class="item-title">آیس موکا</div>
-        <div class="item-desc">ترکیب شکلات و قهوه سرد</div>
-      </article>
-      <article class="card" data-section="cold">
-        <div class="item-title">اسموتی میوه تابستانی</div>
-        <div class="item-desc">میوه‌های تازه و خنک</div>
-      </article>
-      <article class="card" data-section="cold">
-        <div class="item-title">شیک شکلات و وانیل</div>
-        <div class="item-desc">خنک، شیرین و خامه‌ای</div>
-      </article>
+<footer>برای اتنا، بدون اغراق</footer>
+</div>
 
-      <!-- دمنوش‌ها -->
-      <article class="card" data-section="teas">
-        <div class="item-title">دمنوش چای سبز</div>
-        <div class="item-desc">با طعم آرامش‌بخش نعناع و لیمو</div>
-      </article>
-      <article class="card" data-section="teas">
-        <div class="item-title">دمنوش بابونه</div>
-        <div class="item-desc">لطیف و آرام‌بخش برای شب</div>
-      </article>
-      <article class="card" data-section="teas">
-        <div class="item-title">دمنوش گل گاوزبان</div>
-        <div class="item-desc">با طعم آرام‌بخش و دلنشین</div>
-      </article>
-      <article class="card" data-section="teas">
-        <div class="item-title">دمنوش به لیمو</div>
-        <div class="item-desc">طبیعی و تازه</div>
-      </article>
-      <article class="card" data-section="teas">
-        <div class="item-title">دمنوش زنجبیل و دارچین</div>
-        <div class="item-desc">گرم و تند با طعم ملایم</div>
-      </article>
-      <article class="card" data-section="teas">
-        <div class="item-title">دمنوش نعناع خنک</div>
-        <div class="item-desc">خنک و انرژی‌بخش</div>
-      </article>
-      <article class="card" data-section="teas">
-        <div class="item-title">دمنوش ترکیبی آرام‌بخش</div>
-        <div class="item-desc">گیاهان منتخب برای آرامش</div>
-      </article>
+<script>
+const items=document.querySelectorAll("li");
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")})
+},{threshold:.1});
+items.forEach(i=>obs.observe(i));
+</script>
 
-      <!-- شیرینی‌ها -->
-      <article class="card" data-section="pastry">
-        <div class="item-title">کرواسان شکلات</div>
-        <div class="item-desc">پفکی با پر کردن شکلاتی</div>
-      </article>
-      <article class="card" data-section="pastry">
-        <div class="item-title">چیزکیک وانیلی</div>
-        <div class="item-desc">خامه‌ای و لطیف</div>
-      </article>
-      <article class="card" data-section="pastry">
-        <div class="item-title">مافین شکلاتی</div>
-        <div class="item-desc">نرم و خوش‌طعم</div>
-      </article>
-      <article class="card" data-section="pastry">
-        <div class="item-title">براونی کلاسیک</div>
-        <div class="item-desc">شکلاتی و مرطوب</div>
-      </article>
-      <article class="card" data-section="pastry">
-        <div class="item-title">تارت میوه‌ای</div>
-        <div class="item-desc">میوه تازه و خوش‌رنگ</div>
-      </article>
-      <article class="card" data-section="pastry">
-        <div class="item-title">کوکی کره‌ای</div>
-        <div class="item-desc">ترد و خوش‌طعم</div>
-      </article>
-      <article class="card" data-section="pastry">
-        <div class="item-title">نان موز</div>
-        <div class="item-desc">نرم و شیرین</div>
-      </article>
-      <article class="card" data-section="pastry">
-        <div class="item-title">دانمارکی دارچینی</div>
-        <div class="item-desc">با عطر دلنشین دارچین</div>
-      </article>
-
-      <!-- ویژه -->
-      <article class="card" data-section="special">
-        <div class="item-title">ویژه شایلوت</div>
-        <div class="item-desc">ترکیب اختصاصی رُست متوسط با ادویه ملایم</div>
-      </article>
-      <article class="card" data-section="special">
-        <div class="item-title">ویژه روز</div>
-        <div class="item-desc">قهوه یا دمنوش خاص روز با پیشنهاد شگفت‌انگیز</div>
-      </article>
-    </main>
-
-    <footer>
-      
-      <div>طراح @abolfaz1l_ghasemi</div>
-    </footer>
-  </div>
-
-  <script>
-    const sectionButtons = document.querySelectorAll('nav.sections button');
-    const items = Array.from(document.querySelectorAll('#menu article'));
-    sectionButtons.forEach(btn => btn.addEventListener('click', ()=>{
-      sectionButtons.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      filterAndRender();
-    }));
-
-    function filterAndRender(){
-      const active = document.querySelector('nav.sections button.active').dataset.section;
-      items.forEach(it =>{
-        it.style.display = (it.dataset.section === active) ? 'flex' : 'none';
-      });
-    }
-    filterAndRender();
-
-    // تخفیف تصادفی یک‌بار مصرف
-    let discountGiven = false;
-    document.getElementById('claimedBtn').addEventListener('click', function() {
-      if(!discountGiven){
-        const discount = Math.floor(Math.random() * 10) + 1; // 1 تا 10 درصد
-        document.getElementById('discountMessage').textContent = `تبریک! شما ${discount}% تخفیف دریافت کردید 🎉`;
-        discountGiven = true;
-      }
-    });
-
-    document.getElementById('contactLink').addEventListener('click', function(e){
-      e.preventDefault();
-      window.open('','_blank');
-    });
-  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
